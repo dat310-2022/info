@@ -5,7 +5,7 @@ This repository is for the 2022 spring edition of the DAT310 Web programming cou
   - **Intro**: 
   - [how to hand in assignments on GitHub](autograder.md)
   - [Autograder](https://uis.itest.run)
-  - [Discord server](https://discord.gg/HuQHxKQC)
+  - [Discord server](https://discord.gg/rhr8Rsrw)
   - [List of useful resources](Resources.md)
   
   
