@@ -8,7 +8,7 @@ This repository is for the 2022 spring edition of the DAT310 Web programming cou
   - [Discord server](https://discord.gg/rhr8Rsrw)
   - [List of useful resources](Resources.md)
 
-  - [Assignments](../assignments/README.me)
+  - [Assignments](https://github.com/dat310-2022/assignments)
   
 ## Schedule 
  
