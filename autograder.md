@@ -36,7 +36,7 @@ Follow the steps below to register and sign up for the course on Autograder.
    account.
 
 2. Click the "Sign in with GitHub" button in
-   [Autograder](http://ag.itest.run) to register. You will then be
+   [Quickfeed](https://uis.itest.run) to register. You will then be
    taken to GitHub's website.
 
 3. Approve that our Autograder application may have permission to access to the
