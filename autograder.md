@@ -56,7 +56,7 @@ Follow the steps below to register and sign up for the course on Autograder.
    An invitation will be sent to the email address associated with your GitHub account.
    Accept the invitation using the received email.
    Note that emails from GitHub can sometimes take a while to arrive.
-   You can avoid this delay by navigating to the [assignments](https://github.com/dat320-2020/assignments)
+   You can avoid this delay by navigating to the [assignments](https://github.com/dat320-2022/assignments)
    repository and accept the invitation.
 
 5. Once you have accepted the invitation, you will get your own repository under the course organization on GitHub.
