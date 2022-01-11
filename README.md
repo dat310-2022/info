@@ -10,13 +10,15 @@ This repository is for the 2022 spring edition of the DAT310 Web programming cou
 
   - [Assignments](https://github.com/dat310-2022/assignments)
   
+  - [Introduction Video](https://stavanger.instructuremedia.com/embed/362e9346-8ec1-487c-8fec-e49f5dd90cbc)
+  
 ## Schedule 
  
 This is a tentative schedule and will be subject to changes.
 
 | Week | Lecture | Topic                 | Resources                                                                                                                                            |
 |-----:|--------:|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    2 |       1 | HTML                  | [Slides](slides/1-1-Web-programming-HTML.pdf) [examples](examples/html/basic/) [exercises](exercises/html/basic/) [solutions](solutions/html/basic/) |
+|    2 |       1 | HTML                  | [Video](https://stavanger.instructuremedia.com/embed/b3eba18b-9cbd-4205-a9e0-5b8256c07989) [Slides](slides/1-1-Web-programming-HTML.pdf) [examples](examples/html/basic/) [exercises](exercises/html/basic/) [solutions](solutions/html/basic/) |
 |    2 |       2 | CSS I (properties)    |                                                                                                                                                      |
 |    3 |       1 | CSS II (selectors)    |                                                                                                                                                      |
 |    3 |       2 | CSS III (positioning) |                                                                                                                                                      |
