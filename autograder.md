@@ -145,7 +145,7 @@ This section give step-by-step instructions on how to submit assignments.
 
    ```console
    cd $HOME/dat310/assignments
-   git pull course-assignments master
+   git pull course-assignments main
    ```
 
    Once again, if there are conflicting changes, you will need to edit the files
