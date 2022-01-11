@@ -85,7 +85,7 @@ This section give step-by-step instructions on how to submit assignments.
    git clone https://github.com/dat310-2022/username-labs assignments
    cd assignments
    git remote add course-assignments https://github.com/dat310-2022/assignments
-   git pull course-assignments master
+   git pull course-assignments main
    ```
 
    (you may be asked for username and password on GitHub above.)
