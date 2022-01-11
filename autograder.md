@@ -91,7 +91,7 @@ This section give step-by-step instructions on how to submit assignments.
    (you may be asked for username and password on GitHub above.)
 
 3. To avoid having to type your password every time, follow these
-   [steps](https://github.com/dat310-2022/info/blob/master/github-ssh.md)
+   [steps](github-ssh.md)
    to set up SSH for GitHub authentication.
 
 4. One of the most useful git commands is: `git status`. This will most often
