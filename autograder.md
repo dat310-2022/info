@@ -66,7 +66,7 @@ Follow the steps below to register and sign up for the course on Autograder.
 This section give step-by-step instructions on how to submit assignments.
 
 1. Initially, you will get access to two repositories when you have signed up on Autograder.
-   The first is the [`assignments`](https://github.com/dat310-spring21/assignments)
+   The first is the [`assignments`](https://github.com/dat310-2022/assignments)
    repository, which is where we publish all lab assignments, skeleton code
    and additional information.
    You only have read access to this repository, and its content may change
@@ -82,16 +82,16 @@ This section give step-by-step instructions on how to submit assignments.
    ```console
    mkdir $HOME/dat310
    cd $HOME/dat310
-   git clone https://github.com/dat310-spring21/username-labs assignments
+   git clone https://github.com/dat310-2022/username-labs assignments
    cd assignments
-   git remote add course-assignments https://github.com/dat310-spring21/assignments
+   git remote add course-assignments https://github.com/dat310-2022/assignments
    git pull course-assignments master
    ```
 
    (you may be asked for username and password on GitHub above.)
 
 3. To avoid having to type your password every time, follow these
-   [steps](https://github.com/dat310-spring21/course-info/blob/master/github-ssh.md)
+   [steps](https://github.com/dat310-2022/info/blob/master/github-ssh.md)
    to set up SSH for GitHub authentication.
 
 4. One of the most useful git commands is: `git status`. This will most often
@@ -139,7 +139,7 @@ This section give step-by-step instructions on how to submit assignments.
    another group member has previously pushed it to GitHub.
 
 8. As time goes by the teaching staff may publish updates to the
-   original [`assignments`](https://github.com/dat310-spring21/assignments) repo,
+   original [`assignments`](https://github.com/dat310-2022/assignments) repo,
    e.g. new or updated lab assignments. To fetch and integrate these
    updates into your own working copy, you will need to run the following commands:
 
