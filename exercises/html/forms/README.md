@@ -13,8 +13,7 @@
 
 
 ## Exercise #1b: Sending form data
-
-  - Set the `action` of the previous form to `http://www3.ux.uis.no/~balog/dat310/formtest.php`.
+  - Set the `action` of the previous form to `https://www.ux.uis.no/~balog/dat310/formtest.php`.
   - Check what happens upon submitting the form.
   - Which form `method` should you use in this case: `GET` or `POST`?
 
@@ -40,7 +39,7 @@ Create the form below.
     * Because of the follow-up exercise, keep labels *separate from the form control* and use the `for` attribute.
   - Group the fields using `<fieldset>`.
   - Add a hidden field `campaign_id`.
-  - Set the form action to `http://www3.ux.uis.no/~balog/dat310/formtest.php` and check what happens upon submission.
+  - Set the form action to `https://www.ux.uis.no/~balog/dat310/formtest.php` and check what happens upon submission.
 
 ![Exercise3](images/exercise3.png)
 
