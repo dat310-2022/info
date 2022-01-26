@@ -56,5 +56,5 @@ Create the form below.
 
 ## Exercise #5: HTML5 form elements
 
-Try some of the other [HTML5 input types](www.w3schools.com/html/html_form_input_types.asp), e.g., color, url, search, date, etc.
+Try some of the other [HTML5 input types](https://www.w3schools.com/html/html_form_input_types.asp), e.g., color, url, search, date, etc.
 How are these displayed in different browsers?
