@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Exercise #3: Greatest common divisor</title>
+    <script>
+        "use strict";
+
+        function gcd(a, b) {
+            while (b != 0) {
+                let t = b;
+                b = a % b;
+                a = t;
+            }
+            return a;
+        }
+    </script>
+</head>
+<body>
+<script>
+    "use strict";
+
+    let a = 0;
+    while (!(parseInt(a) > 0)) {
+        a = prompt("Enter the first number:");
+    }
+    let b = 0;
+    while (!(parseInt(b) > 0)) {
+        b = prompt("Enter the second number:");
+    }
+
+    document.write("The greatest common divisor of <strong>"
+            + a + "</strong> and <strong>"
+            + b + "</strong> is <strong>"
+            + gcd(a, b) + "</strong>");
+</script>
+</body>
+</html>

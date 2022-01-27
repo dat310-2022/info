@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Example: Arrays</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    function printArray(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i] + "<br />");
+        }
+    }
+
+    const fruits1 = ["orange", "apple"];
+    const fruits2 = ["banana", "mango"];
+    const fruits = fruits1.concat(fruits2); // create a new array by concatenating 2 arrays
+    printArray(fruits);
+
+    const last = fruits.pop();   // remove last element (mango)
+    fruits.push("kiwi");       // add a new element to the end of the array
+    fruits.sort();             // sort array
+    printArray(fruits);
+</script>
+</body>
+</html>

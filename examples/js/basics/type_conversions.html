@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Example: Explicit type conversions</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    // Numbers to strings
+    let num = 6;
+    // a) Using the constructor of the String class
+    let str = String(num);
+    console.log(str);
+    console.log(typeof str);
+    // b) Using the toString() method of the String class
+    let str2 = num.toString();
+    console.log(str2);
+    console.log(typeof str2);
+
+    // Strings to numbers
+    // a) Using the constructor of the Number class
+    let str3 = "153";
+    let num3 = Number(str3);
+    console.log(num3);
+    console.log(typeof num3);
+    // b) Using the parseInt() or parseFloat() global functions
+    let num4 = parseInt("10");
+    let num5 = parseFloat("10.33");
+    console.log(num4);
+    console.log(typeof num4);
+    console.log(num5);
+    console.log(typeof num5);
+</script>
+</body>
+</html>
