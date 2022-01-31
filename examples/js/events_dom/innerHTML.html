@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: innerHTML vs textContents </title>
+    <script>
+        function replaceInnerHTML(){
+            let theP = document.getElementById("theP");
+            let text = document.getElementById("input").value;
+            theP.innerHTML = text;
+        }
+        function replaceText(){
+            let theP = document.getElementById("theP");
+            let text = document.getElementById("input").value;
+            theP.textContent = text;
+        }
+    </script>
+</head>
+<body>
+    
+    <p id="theP">This is a nice paragraph!</p>
+    <input type="text" id="input" placeholder="new text" size="30">
+    <button onclick="replaceInnerHTML();">Replace inner html</button>
+    <button onclick="replaceText();">Replace text</button>
+
+</body>
+</html>

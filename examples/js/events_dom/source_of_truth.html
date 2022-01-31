@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example: source of truth</title>
+    <style>
+        .counter {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        .count {
+            margin-right: 10px;
+        }
+        .counter_container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        .counter_container>* {
+            margin-bottom: 30px;
+        }
+    </style>
+    <script>
+
+        // This functio uses the DOM (html) as source of truth.
+        function add(){
+            counter = document.getElementById("count");
+            let count = parseInt(counter.innerText) + 1;
+            counter.innerText = count;
+        }
+
+        // a global variable
+        let count = 0;
+        // increment uses the global count.
+        function increment(){
+            count += 1;
+            document.getElementById("count_2").innerText = count;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="counter_container">
+        <div class="counter">
+            <span id="count" class="count">0</span>
+            <button onclick="add();">Add</button>
+        </div>
+        <div class="counter">
+            <span id="count_2" class="count">0</span>
+            <button onclick="increment(count);">Add</button>
+        </div>
+    </div>
+    
+</body>
+</html>

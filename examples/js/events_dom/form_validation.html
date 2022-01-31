@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example: JS Form validation with action</title>
+    <script>
+        function checkRegistration(){
+            let form_valid = (document.getElementById('some_input').value == 'google');
+            if(!form_valid){
+                alert('Given data is incorrect');
+                // returning false will prevent the action from happening.
+                return false;
+            }
+            return true;
+        }
+        function checkRegistration2(event){
+            let form_valid = (document.getElementById('some_input').value == 'google');
+            if(!form_valid){
+                alert('Given data is incorrect');
+                // returning false will prevent the action from happening.
+                event.preventDefault();   
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Submitting the form will open google.com -->
+<form onsubmit="return checkRegistration();" method="get" action="http://google.com">
+    Write google to go to google..<br/>
+    <input type="text" id="some_input" value=""/>
+    <input type="submit" value="google it"/>
+</form>
+
+<form onsubmit="checkRegistration2(event);" method="get" action="http://google.com">
+    Write google to go to google..<br/>
+    <input type="text" id="some_input" value=""/>
+    <input type="submit" value="google it"/>
+</form>
+</body>
+</html>
