@@ -1,0 +1,22 @@
+#cardboard {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: #ececec;
+    margin: auto;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    border: 2px solid #73AD21;
+    background-color: white;
+    backface-visibility: hidden;
+    margin: 5px;
+    transition: transform 0.6s;
+}
+
+.clearleft {
+    clear: left;
+}

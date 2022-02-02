@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example: Event listeners</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border: 1px solid black;
+            float: left;
+            margin: 10px;
+        }
+
+        .nolog {
+            background-color: red;
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert("clicked");
+        }
+
+        function log() {
+            console.log("clicked " + (new Date()).toTimeString());
+        }
+
+        function init() {
+            // assign showAlert() to all divs
+            document.querySelectorAll(".div").forEach((
+                element)=>{element.addEventListener("click", showAlert)}
+            );
+            
+            // assign log() to all divs that do not have class nolog
+            document.querySelectorAll(".div:not(.nolog)").forEach((
+                element)=>{element.addEventListener("click", log)}
+            );
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+<div></div>
+<div class="nolog"></div>
+<div></div>
+<div></div>
+<div class="nolog"></div>
+<div></div>
+</body>
+</html>
