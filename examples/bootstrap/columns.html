@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap example: Rows and columns</title>
+
+    <!-- Bootstrap CSS to get their styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .high-2 {
+            min-height: 200px;
+        } 
+        .high-1 {
+            height: 100px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="container bg-light high-2 border border-3 border-info my-2">
+        <h2>12 Columns</h2>
+        <div class="row bg-white">
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>    
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>    
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>    
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>    
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+        </div>
+    </div>
+    <div class="container bg-light high-2 border border-3 border-info my-2">
+        <h2>Combined Columns (total 11)</h2>
+        <div class="row bg-white">
+            <div class="col-2 high-1 border border-2 rounded-3 border-info"> col-2 </div>    
+            <div class="col-2 high-1 border border-2 rounded-3 border-info"> col-2 </div>    
+            <div class="col-3 high-1 border border-2 rounded-3 border-info"> col-3 </div>    
+            <div class="col-3 high-1 border border-2 rounded-3 border-info"> col-3 </div>    
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+        </div>
+        <p>Missing columns are left empty.</p>
+    </div>
+    <div class="container bg-light high-2 border border-3 border-info my-2">
+        <h2>Combined columns (total 13)</h2>
+        <div class="row bg-white">
+            <div class="col-2 high-1 border border-2 rounded-3 border-info"> col-2 </div>    
+            <div class="col-2 high-1 border border-2 rounded-3 border-info"> col-2 </div>    
+            <div class="col-3 high-1 border border-2 rounded-3 border-info"> col-3 </div>    
+            <div class="col-3 high-1 border border-2 rounded-3 border-info"> col-3 </div>    
+            <div class="col-1 high-1 border border-2 rounded-3 border-info"> col-1 </div>
+            <div class="col-2 high-1 border border-2 rounded-3 border-info"> col-2 </div>
+        </div>
+        <p>Columns more than 12 are wrapped.</p>
+    </div>
+    <div class="container bg-light high-2 border border-3 border-info my-2">
+        <h2>Variable columns </h2>
+        <div class="row bg-white">
+            <div class="col high-1 border border-2 rounded-3 border-info"> col </div>    
+            <div class="col high-1 border border-2 rounded-3 border-info"> col </div>    
+            <div class="col-sm-3 high-1 border border-2 rounded-3 border-info"> col-3 </div>    
+            <div class="col-sm-3 high-1 border border-2 rounded-3 border-info"> col-3 </div>    
+            <div class="col high-1 border border-2 rounded-3 border-info"> col </div>
+            <div class="col-2 high-1 border border-2 rounded-3 border-info"> col-2 </div>
+        </div>
+        <p>Columns without number, <code>col</code> grow to fill the row.</p>
+    </div>
+
+
+</body>
+</html>
