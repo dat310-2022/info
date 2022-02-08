@@ -79,7 +79,7 @@ Desktop view:
 
 ## Exercise #6: Wild & Wacky Vegetables
 
-Format and extend the given [starer html file](exercise6.html) using Bootstrap by following the steps below.
+Format and extend the given [starter html file](exercise6.html) using Bootstrap by following the steps below.
 
 1) Use the [Bootstrap grids classes](https://getbootstrap.com/docs/5.0/layout/grid) to create a sidebar and main content.
 Use a [card](https://getbootstrap.com/docs/5.0/components/card/#titles-text-and-links)  and [nav list](https://getbootstrap.com/docs/5.0/components/navs-tabs/#vertical) to style the sidebar.
