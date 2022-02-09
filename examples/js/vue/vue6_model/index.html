@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    <title>Vue: Form input</title>
+    <style>
+        .box {
+            width: 450px;
+            border: 1px solid gray;
+            margin: 10px;
+            padding:10px;
+        }
+        .container {
+            display: flex;
+        }
+        label.fixed {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Handling forms</h1>
+    <div id="app">
+        <div class="container">
+            <div class="box">
+                <label for="name" class="fixed">Name</label><input id="name" v-bind:value="john.name" readonly/><br>
+                <label for="nickname" class="fixed">Nickname</label><input id="nickname" v-model="john.nickname"/><br>
+                <label for="age" class="fixed">Age</label><input type="number" id="age" v-model="john.age"/><br>
+                <input type="checkbox" id="happy" v-model="john.happy"/><label for="happy" class="fixed">is happy</label><br>
+                <span>John knows:</span>
+                <span v-for="skill in skills">
+                    <input type="checkbox" 
+                        v-bind:id="skill" 
+                        v-bind:value="skill" 
+                        v-model="john.skills">
+                    <label v-bind:for="skill">{{ skill }}</label>
+                </span><br>
+                <span>Johns favorite framework:
+                    <input type="radio" 
+                        id="Angular" 
+                        value="Angular" 
+                        v-model="john.favorite">
+                    <label for="Angular">Angular</label>
+                    <input type="radio" 
+                        id="React" 
+                        value="React" 
+                        v-model="john.favorite">
+                    <label for="React">React</label>
+                    <input type="radio" 
+                        id="Vue" 
+                        value="Vue" 
+                        v-model="john.favorite">
+                    <label for="Vue">Vue</label>
+                </span>
+                <br>
+                <label for="db" class="fixed">Favorite database:</label>
+                <select id="db" v-model="john.db">
+                    <option v-for="option in dbs" v-bind:value="option.value">
+                        {{ option.text }}
+                    </option>
+                </select>
+                
+            </div>
+            <div class="box">
+                <table>
+                    <tr v-for="(value, key) in john">
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            // the data used in this app
+            data: function(){
+                return { 
+                    john: {
+                        name: "John Doe",
+                        nickname: null,
+                        skills: []
+                    },
+                    skills: ["JS", "Python", "SQL"],
+                    dbs: [
+                        { text: 'MS SQLServer', value: 'A'},
+                        { text: 'MySQL', value: 'B'},
+                        { text: 'SQLite', value: 'C'},
+                    ]
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>

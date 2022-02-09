@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    <title>Solution: Vue Exercise 2</title>
+    <style>
+        .counter {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        .count {
+            margin-right: 10px;
+        }
+        .counter_container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        .counter_container>* {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="counter_container">
+            <div>
+                <button v-on:click="add">Add counter</button>
+                <button v-on:click="addToAll">Add to all</button>
+            </div>
+            <div class="counter" v-for="(count, index) in counts">
+                <span id="count" class="count">{{ count }}</span>
+                <button v-on:click="increment(index)">Add</button>
+            </div>
+            <div v-if="(counts.length == 0)">
+                <span>No counter added.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data: function(){ 
+                return {
+                    counts: []
+                }
+            },
+            methods: {
+                increment: function(index){
+                    this.counts[index]++;
+                },
+                add: function(){
+                    this.counts.push(0);
+                },
+                addToAll: function(){
+                    for (let i=0; i< this.counts.length; i++){
+                        this.increment(i);
+                    }
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>

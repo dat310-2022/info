@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <title>First Vue</title>
+</head>
+<body>
+    <h1>Vue app below</h1>
+    <div id="app">
+    </div>
+
+<script>
+    var app = Vue.createApp({
+        // specify a template
+        template: "<strong>{{ message }}</strong>",
+        // the data used in this app
+        data(){
+            return { 
+                message: "Hello Vue!"
+            }
+        }
+    });
+    // mount the app on the element #app
+    let vm = app.mount("#app");
+</script>
+</body>
+</html>

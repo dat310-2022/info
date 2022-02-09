@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    
+    <title>First Vue</title>
+    <style>
+        .success, .error {
+            border: 2px solid black;
+            width: 300px;
+            height: 100px;
+        }
+        .success {
+            background-color: lightgreen;
+            
+        }
+        .error {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue app below</h1>
+    <div id="app">
+    </div>
+
+    <script>
+        var app = Vue.createApp({
+            // specify a template
+            template: /*html*/`
+                <div v-if="easy" class="success">Have fun!</div>
+                <div v-else class="error">Oh no!</div>`,
+            // the data used in this app
+            data(){ 
+                return { 
+                    easy: true
+                }
+            },
+            methods: {
+                toggleEasy: function(){
+                    if (this.easy) this.easy = false;
+                    else this.easy = true;
+                }
+            }
+        });
+        // mount the app on the element #app
+        let vm = app.mount("#app");
+    </script>
+</body>
+</html>

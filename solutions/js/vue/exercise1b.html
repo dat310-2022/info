@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    <title>Solution: Vue Exercise 1b</title>
+    <style>
+        .counter {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        .count {
+            margin-right: 10px;
+        }
+        .counter_container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        .counter_container>* {
+            margin-bottom: 30px;
+        }
+        .even {
+            background-color: lightgray;
+        }
+        .counter_label {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="counter_container">
+            <div class="counter" v-bind:class="{'even': isEven}">
+                <span id="count" class="count">{{ count }}</span>
+                <button v-on:click="increment">Add</button>
+                <span class="counter_label">{{ isEven ? "even": "odd" }}</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data: function(){ 
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                increment: function(){
+                    this.count += 1;
+                }
+            },
+            computed: {
+                isEven: function(){
+                    return (this.count%2 == 0);
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>

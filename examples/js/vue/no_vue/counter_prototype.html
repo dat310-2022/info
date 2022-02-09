@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example: source of truth</title>
+    <style>
+        .counter {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        .count {
+            margin-right: 10px;
+        }
+        .counter_container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        .counter_container>* {
+            margin-bottom: 30px;
+        }
+    </style>
+    <script>
+        function Counter(){
+            this.count = 0;
+            this.add = function() {
+                this.count += 1;
+                this.element.querySelector(".count")
+                    .innerText = this.count;
+            }
+            this.element = initCounterDisplay(this);
+        }
+
+        function initCounterDisplay(that){
+            let counterdiv = document.createElement('div');
+            counterdiv.classList.add("counter");
+            document.querySelector(".counter_container").appendChild(counterdiv);
+
+            let count = document.createElement('span');
+            count.classList.add("count");
+            count.innerText="0";
+            counterdiv.appendChild(count);
+
+            let button = document.createElement('button');
+            button.onclick = function(){that.add()};
+            button.innerText = "Add";
+            counterdiv.appendChild(button);
+
+            return counterdiv;
+        }
+
+        let counters = [];
+
+        function addCounter(){
+            counters.push(new Counter());
+        }
+
+        function addToAll(){
+            counters.forEach((counter)=>counter.add());
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div class="counter_container">
+        <div>
+            <button onclick="addCounter();">Add counter</button>
+            <button onclick="addToAll();">Add to all</button>
+        </div>
+    </div>
+    
+</body>
+</html>

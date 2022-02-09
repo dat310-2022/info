@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <title>First Vue</title>
+    <style>
+        div {
+            background-color: #ffff00;
+            border: 2px solid black;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue app below</h1>
+    <div id="app">
+    </div>
+
+    <script>
+        var app = Vue.createApp({
+            // specify a template
+            template: /*html*/`
+                <div 
+                  v-on:mouseover="toggleMessage()"
+                  v-on:mouseout="toggleMessage()"
+                >{{ message }}</div>`,
+            // the data used in this app
+            data: ()=> {
+                return { 
+                    message: "Hello Vue!"
+                }
+            },
+            methods: {
+                toggleMessage: function(){
+                    if (this.message == "Hello Vue!")
+                        this.message = "Can I help you?";
+                    else this.message = "Hello Vue!"
+                }
+            }
+        })
+        // mount the app on the element #app
+        app.mount("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    <title>Solution: Vue Exercise 3</title>
+    <style>
+        .counter {
+            border: 1px solid gray;
+            padding: 10px;
+            overflow: auto;
+        }
+        .counter span {
+            margin-right: 10px;
+        }
+        .counter_container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        .counter_container>* {
+            margin-bottom: 30px;
+        }
+        .category {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="counter_container">
+            <div>
+                <fieldset>
+                    <legend>New counter</legend>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" v-model="new_title">
+                    <br>
+                    <span>Categories</span>
+                    <input type="checkbox" id="todo" value="todo" v-model="new_categories">
+                    <label for="todo">Todo</label>
+                    <input type="checkbox" id="work" value="work" v-model="new_categories">
+                    <label for="work">Work</label>
+                    <input type="checkbox" id="home" value="home" v-model="new_categories">
+                    <label for="home">Home</label>
+                    <br>
+                    <button v-on:click="add">Add counter</button>
+                </fieldset>
+                <fieldset>
+                    <legend>Other</legend>
+                    <button v-on:click="addToAll">Add to all</button>
+                </fieldset>
+            </div>
+            <div class="counter" v-for="(item, index) in counts">
+                <span id="count" class="count">{{ item.count }}</span>
+                <span><button v-on:click="increment(index)">Add</button></span>
+                <span>{{ item.title }}</span>
+                <span class="category" v-for="cat in item.categories">#{{ cat }}</span>
+            </div>
+            <div v-if="(counts.length == 0)">
+                <span>No counter added.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data: function(){ 
+                return {
+                    counts: [],
+                    new_title: null,
+                    new_categories: []
+                }
+            },
+            methods: {
+                increment: function(index){
+                    this.counts[index].count++;
+                },
+                add: function(){
+                    this.counts.push({   
+                        count: 0, 
+                        title: this.new_title,
+                        categories: this.new_categories
+                    });
+                    this.new_title = null;
+                },
+                addToAll: function(){
+                    for (let i=0; i< this.counts.length; i++){
+                        this.increment(i);
+                    }
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>

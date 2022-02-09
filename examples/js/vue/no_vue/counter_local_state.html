@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example: source of truth</title>
+    <style>
+        .counter {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        .count {
+            margin-right: 10px;
+        }
+        .counter_container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        .counter_container>* {
+            margin-bottom: 30px;
+        }
+    </style>
+    <script>
+
+        function createCounter(){
+            let theCount = 0;
+            let counter = document.createElement('div');
+            counter.classList.add("counter");
+            document.querySelector(".counter_container").appendChild(counter);
+
+            let count = document.createElement('span');
+            count.classList.add("count");
+            count.innerText="0";
+            counter.appendChild(count);
+
+            let button = document.createElement('button');
+            button.onclick = function(){
+                theCount += 1;
+                this.parentElement.querySelector(".count")
+                    .innerText = theCount;
+            };
+            button.innerText = "Add";
+            counter.appendChild(button);
+
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div class="counter_container">
+        <button onclick="createCounter();">Add counter</button>
+    
+    </div>
+    
+</body>
+</html>

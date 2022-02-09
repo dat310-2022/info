@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    
+    <title>Vue: Render list</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue app below</h1>
+    <div id="app">
+    </div>
+
+    <script>
+        Vue.createApp({
+            // specify a template
+            template: /*html*/`
+                <h2>Short fruits</h2>
+                <ul>
+                    <li v-for="(item, index) in shortFruits">#{{ index }} {{  item }}</li>
+                </ul>
+                <h2>All fruits</h2>
+                <ul>
+                    <li v-for="(item, index) in capitalFruits">#{{ index }} {{  item }}</li>
+                </ul>
+                <button v-on:click="appendKiwi">Add Kiwi</button>`,
+            // the data used in this app
+            data(){ 
+                return { fruits: ["apple", "pear", "banana", "orange"] }
+            },
+            methods: {
+                appendKiwi: function(){
+                    this.fruits.push("kiwi");
+                }
+            },
+            computed: {
+                // computes are reactive properties, recomputed when data changes.
+                shortFruits: function(){
+                    return this.fruits.filter(function(value){return (value.length <= 4)})
+                },
+                capitalFruits: function(){
+                    let cFruits = [];
+                    for (fruit of this.fruits){
+                        cFruits.push(fruit[0].toUpperCase() + fruit.slice(1));
+                    }
+                    return cFruits;
+                }
+
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
