@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+
+    
+    <style>
+        .box {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        
+        .container {
+            width: 300px;
+            margin: 30px auto;
+        }
+
+        i.fa {
+            font-size: 2em;
+        }
+        button {
+            padding: 3px;
+            margin: 2px;
+        }
+        .final {
+            display: flex;
+            justify-content: center;
+        }
+        i.big {
+            font-size:50px;
+            color: white;
+        }
+        .circle {
+            background-color: blue;
+            border-radius: 50px;
+            padding: 10px;
+        }
+    </style>
+    
+    <title>Vue style and classes</title>
+</head>
+<body>
+<div id="app">
+    
+    <div class="container">
+        <label for="backcolor">Select a background color:
+        <input type="color" id="backcolor" v-model="bcolor"></label>
+        <div class="box">
+            <div>Select an icon</div>
+            <button 
+                v-for="ic in icons"
+                v-on:click="theicon=ic"
+                >
+                <i class="fa" 
+                   v-bind:class="ic"
+                ></i>
+            </button>
+            
+        </div>
+        <div class="box final">
+            <div class="circle" v-bind:style="{ backgroundColor: bcolor }">
+                <i class="fa big" v-bind:class="theicon"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    let app = Vue.createApp({
+        data() {
+            return {
+                bcolor: "blue",
+                icons: ["fa-home", "fa-anchor", "fa-android", "fa-angellist", "fa-automobile", "fa-bicycle"],
+                theicon: "fa-home"
+            }
+        }
+    });
+    app.mount("#app");
+</script>
+</body>
+</html>

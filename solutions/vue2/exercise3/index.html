@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    
+    <!-- load data, i.e. text used in this app -->
+    <script src="src/data.js"></script>
+    
+    <!-- load the paragraph component -->
+    <script src="src/paragraph.js"></script>
+
+    <!-- load app, defer to ensure that #app element is parsed. -->
+    <script src="app.js" defer></script>
+
+    <style>
+        .tab-button {
+          padding: 6px 10px;
+          border-top-left-radius: 3px;
+          border-top-right-radius: 3px;
+          border: 1px solid #ccc;
+          cursor: pointer;
+          background: #f0f0f0;
+          margin-bottom: -1px;
+          margin-right: -1px;
+        }
+        .tab-button:hover {
+          background: #e0e0e0;
+        }
+        .tab-button.active {
+          background: #e0e0e0;
+        }
+        .tab {
+          border: 1px solid #ccc;
+          padding: 10px;
+        }
+        .clickable:hover {
+          cursor: pointer;
+        }
+        textarea {
+          width: 100%;
+        }
+      </style>
+
+    
+    <title>Vue  playlist</title>
+</head>
+<body>
+  <div id="app">
+  </div>
+</body>
+</html>

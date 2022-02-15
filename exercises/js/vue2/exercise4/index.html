@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <script src="src/data.js"></script>
+
+    <script src="src/main.js"></script>
+    <script src="src/student.js"></script>
+    <script src="src/course.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Vue list</title>
+</head>
+<body>
+<div id="app">
+    <!-- 3 components only 1 of them is shown, based on the computed show property. -->
+    <main-page 
+        v-bind:students="students" 
+        v-bind:courses="courses"
+        v-if="show == 'main-page'"
+        v-on:show-student="openStudent"
+        v-on:show-course="openCourse"
+    ></main-page>
+    <student-page 
+        v-bind:grades="studentGrades" 
+        v-bind:student="student"
+        v-if="show == 'student'"
+        v-on:back="back"
+    ></student-page>
+    <course-page 
+        v-bind:grades="courseGrades" 
+        v-bind:course="course"
+        v-if="show == 'course'"
+        v-on:back="back"
+    ></course-page>
+</div>
+<script>
+    let app = Vue.createApp({
+        data() {
+            return {
+                // the data from data.js
+                courses: courses,
+                students: students,
+                grades: grades,
+                // which student or course are ve currently viewing
+                student: null,
+                course: null,
+            }
+        },
+        methods: {
+            openCourse: function(course){
+                    this.course = course;
+                    this.student = null;
+            },
+            openStudent: function(student){
+                    this.student = student;
+                    this.course = null;  
+            },
+            back: function(){
+                this.student = null;
+                this.course = null;
+            }
+        },
+        computed: {
+            show: function(){
+                if (this.student){
+                    return "student";
+                } 
+                if (this.course){
+                    return "course";
+                }
+                return "main-page";
+            },
+            studentGrades: function(){
+                return this.grades.filter(
+                    grade => grade.student_no === this.student.student_no );
+            },
+            courseGrades: function(){
+                return this.grades.filter(
+                    grade => grade.course_id === this.course.course_id );
+            },
+            
+        },
+    });
+    app.component("main-page", mainC);
+    app.component("my-table", tableC);
+    app.component("student-page", studentC);
+    app.component("course-page", courseC);
+    app.mount("#app");
+</script>
+</body>
+</html>

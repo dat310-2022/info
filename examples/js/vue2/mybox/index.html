@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <script src="mybox.js"></script>
+    
+    <title>Solution: Vue Exercise 1b</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 35px;
+            background-color: lightskyblue;
+            border: 1px solid blue;
+            margin: 5px;
+            padding: 7px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <div style="float: left;">
+            <my-box v-for="n in 3" v-bind:nr="n" v-on:click="setClicked($event)"></my-box>
+            <my-box color="green" v-bind:nr="1" v-on:click="setClicked"></my-box>
+            <my-box color="red" title="AA" v-bind:nr="2"
+            v-on:click="setClicked('AA')"
+            ></my-box>
+        </div>
+        <div style="float: left;">
+            {{ clicked }}
+        </div>
+        <div style="float: right;">
+            <my-box v-bind:nr="4"></my-box>
+        </div>        
+    </div>
+
+
+    <script>
+        let mainC = {
+            data() { return { clicked: "" }},
+            methods: {
+                setClicked: function(value){
+                    this.clicked = value;
+                }
+            }
+
+        }
+
+        let app = Vue.createApp(mainC);
+        app.component('my-box', myboxC);
+        app.mount("#app");
+    </script>
+</body>
+</html>

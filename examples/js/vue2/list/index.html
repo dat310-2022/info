@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Vue list</title>
+</head>
+<body>
+<div id="app">
+    <form>
+        <input type="text" id="songTextInput" size="40" placeholder="Song name" v-model="song">
+        <input type="text" id="bandTextInput" size="40" placeholder="Band name" v-model="band">
+        <input type="button" id="addButton" value="Add Song" v-on:click="addSong">
+    </form>
+
+    <ul id="playlist">
+        <li v-for="(song, index) in playlist">
+            <img src="images/delete.png" alt="delete" class="icon" v-on:click="remove(index)">
+            <img src="images/play.png" alt="play" class="icon" v-on:click="play(index)">
+            <span class="inlist">{{ song.name }}</span>
+            <span class="inlist band">{{ song.band }}</span>
+            <span class="inlist">played {{ song.played ? song.played : "0" }} times</span>
+        </li>
+    </ul>
+</div>
+<script>
+    function Song(name, band){
+        this.name = name,
+        this.band = band
+    }
+
+    let app = Vue.createApp({
+        data(){ 
+            return {
+                playlist: [
+                    new Song("My favorite", "This band"),
+                    new Song("Second favorite", "Other band")
+                ],
+                // the values modelled by the form
+                song: null,
+                band:null
+            }
+        },
+        methods: {
+            addSong: function() {
+                this.playlist.push(new Song(this.song, this.band));
+            },
+            remove: function(index){
+                if (index > -1) {
+                    this.playlist.splice(index, 1);
+                  }
+            },
+            play: function(index){
+                let played = this.playlist[index].played ? this.playlist[index].played : 0;
+                this.playlist[index].played = played + 1;
+            }
+        }
+    });
+
+    app.mount("#app");
+</script>
+</body>
+</html>

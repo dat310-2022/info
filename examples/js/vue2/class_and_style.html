@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    <title>First Vue</title>
+    <style>
+        .border {
+            border: 2px solid gray;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue app below</h1>
+    <div id="app">
+    </div>
+
+    <script>
+        let app = Vue.createApp({
+             // specify a template
+            template: /* html */`
+            <div 
+                v-bind:class="{ border: hasBorder }" 
+                v-bind:style="{ 'background-color': bcolor, color: textcolor }"
+                class="box"
+            >
+                {{ message }}
+            </div>`,
+            // the data used in this app
+            data: function(){
+                return { 
+                    message: "Hello Vue!",
+                    hasBorder: true,
+                    bcolor: "lightblue",
+                    textcolor: "white",                
+                }
+            }
+        });
+        let vm = app.mount("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    
+    <link rel="stylesheet" href="style.css">
+
+    <title>Example</title>
+</head>
+<body>
+    <div id="app">
+        <div class="cardboard" style="width: 400px;">
+            <!-- for the assignment create many cards using v-for -->
+            <card v-bind:card="card" v-on:flip="flip(card)"></card>
+        </div>
+    </div>
+
+    <script>
+        let cardC = {
+            props: ["card"],
+            template: /*html*/`
+            <div class="outer" v-on:click="$emit('flip')" 
+                v-bind:style="{ visibility: card.matched? 'hidden': 'visible'}"
+                >
+                <div class="card front" v-bind:style="{ transform: card.flipped? 'rotateY(180deg)': 'none' }">
+                    <img v-bind:src="card.img">
+                </div>
+                <div class="card back" v-bind:style="{ transform: card.flipped? 'rotateY(180deg)': 'none' }"></div>
+            </div>
+            `
+        }
+
+        let app = Vue.createApp({
+            data(){
+                // for the assignment you can have many cards here.
+                return {
+                    card: {
+                        img: "images/css.jpg",
+                        flipped: false,
+                        matched: false
+                    }
+                }
+            },
+            methods: {
+                flip(card){
+                    if (!card.matched){
+                        card.flipped = true;
+                    }
+                    //find out if matched. otherwise
+                    this.flipBack(card);
+                },
+                flipBack(card){
+                    // flip the card back, after some timeout
+                    setTimeout(function(){
+                        card.flipped = false;
+                    },1000);
+                }
+            }
+        });
+        app.component('card',cardC);
+        app.mount("#app");
+    </script>
+</body>
+</html>
