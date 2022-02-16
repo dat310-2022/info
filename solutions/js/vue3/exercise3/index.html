@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    
+    <script src="src/data.js"></script>
+
+    <script src="src/main.js"></script>
+    <script src="src/student.js"></script>
+    <script src="src/course.js"></script>
+    <script src="src/grade-form.js"></script>
+
+    <script src="src/router.js"></script>
+
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Vue list</title>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+</div>
+<script>
+    let app = Vue.createApp({});
+    //app.component("main-page", mainC);
+    app.component("my-table", tableC);
+    app.component("grade-form", gradeFormC);
+    app.use(router);
+    //app.component("student-page", studentC);
+    //app.component("course-page", courseC);
+    app.mount("#app");
+</script>
+</body>
+</html>

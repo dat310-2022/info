@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <script src="src/data.js"></script>
+
+    <script src="src/list.js"></script>
+    <script src="src/form.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Vue list</title>
+</head>
+<body>
+<div id="app">
+    <my-favorites></my-favorites>
+    <fruit-form></fruit-form>
+
+</div>
+<script>
+    let app = Vue.createApp({});
+    app.component('my-favorites',favoriteC);
+    app.component('fruit-form', fruitFormC);
+    app.mount('#app');
+</script>
+</body>
+</html>
