@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Cookies example</title>
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    Counter: <span id="count">{{ counter }}</span> | <a href="{{ url_for("inc") }}">Increment</a>
+    <div>
+        <button onclick="increment()">JS Increment</button>
+    </div>
+</body>
+</html>
