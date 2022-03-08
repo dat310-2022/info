@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: JS Async</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            transition: background-color 1s linear;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .red { 
+            background-color: red;
+        }
+        .green { 
+            background-color: greenyellow;
+        }
+        .yellow { 
+            background-color: yellow;
+        }
+        .container {
+            margin:auto;
+            width: 102px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box"></div>
+        <button onclick="colorsequence()">Start</button>
+        <button onclick="stop = true;">Stop</button>
+    </div>
+    <script>
+        let stop = false;
+        const colors = ["green", "red", "blue", "yellow"]
+
+        function getNext(){
+            return new Promise(
+                (resolve,reject)=> setTimeout(
+                    ()=>{
+                        if (!stop){
+                            let rand = Math.floor(Math.random()* colors.length);
+                            resolve(colors[rand]);
+                        } 
+                        else {
+                            reject(new Error("Stopping color change!"));
+                        }
+                    } 
+                ,2000)
+            );
+        }
+
+        function sleep(ms){
+            return new Promise(
+                (resolve,reject) => setTimeout(
+                    function(){
+                        if (!stop){
+                            resolve();
+                        } 
+                        else {
+                            reject(new Error("Stopping color change!"));
+                        }
+                    }, ms)
+            )
+        }
+
+        async function colorsequence(){
+            const box = document.getElementById("box");
+            box.classList.add("red");
+            try {
+                while (true){
+                    let color = await getNext();
+                    console.log("Change to ", color)
+                    box.classList.remove("red", "blue", "green", "yellow");
+                    box.classList.add(color);
+                }
+            }
+            catch(err){
+                console.log(err);
+            }
+            finally {
+                box.classList.remove("red", "blue");
+            }
+        }
+    </script>
+
+</body>
+</html>

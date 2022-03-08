@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Log async</title>
+    <script src="timeout.js"></script>
+    <script>
+        let color = "blue";
+
+        function singleLog(){
+            console.log(Date.now() % 60000 + " Single logging");
+        }
+
+
+        async function logSleep(){
+            console.log((Date.now() % 60000) + "ms: Starting to log");
+            await sleep(1000);
+            console.log((Date.now() % 60000) + "ms: log2 after 1000ms");
+            await sleep(1000);
+            console.log((Date.now() % 60000) + "ms: log3 after 1000ms");
+            await sleep(1000);
+            console.log((Date.now() % 60000) + "ms: log4 after 1000ms");
+        }
+        async function logReturn(){
+            console.log((Date.now() % 60000) + "ms: Starting with " + color);
+            
+            color = await sleepReturn(5000);
+            console.log((Date.now() % 60000) + "ms: updated to " + color);
+        }
+
+        function logColor(){
+            console.log(Date.now() % 60000 + "ms: now " + color);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="logSleep();">Start logging</button>
+    <button onclick="singleLog();">Single log</button>
+    <button onclick="logReturn();">Log return</button>
+    <button onclick="logColor();">Log color</button>
+</body>
+</html>

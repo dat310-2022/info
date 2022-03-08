@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS: Exercise 1</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            /*transition: transform 1s linear;*/
+        }
+        
+        .red { 
+            background-color: red;
+        }
+        .around {
+            transition: transform 3s linear;
+            transform: rotate(360deg);
+        }
+        
+        .container {
+            margin:auto;
+            width: 102px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box" class="red">?</div>
+        <button onclick="start()">Start</button>
+    </div>
+
+    <script>
+        function sleep(ms){
+            return new Promise(
+                (resolve)=>setTimeout(resolve, ms)
+            );
+        }
+        function start(){
+            const box = document.getElementById("box");
+            // repeate the following forever
+            // add class around to box
+            // sleep 3 seconds
+            // remove class around
+            // sleep 20ms
+
+        }
+        
+
+    </script>
+</body>
+</html>

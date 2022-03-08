@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: JS Async</title>
+    <script src="timeout.js"></script>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            transition: background-color 1.5s linear;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .red { 
+            background-color: red;
+        }
+        .green { 
+            background-color: greenyellow;
+        }
+        .yellow { 
+            background-color: yellow;
+        }
+        .container {
+            margin:auto;
+            width: 102px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box"></div>
+        <button onclick="colorsequence()">Toggle</button>
+    </div>
+    <script>
+        function colorsequence(){
+            const box = document.getElementById("box");
+            // add class red
+            // after 2sec replace class red with blue
+            // after another 2sec replace class blue with green
+            // after another 2sec replace class green with yellow
+            box.classList.add("red");
+            setTimeout(
+                function(){
+                    box.classList.replace("red", "blue");
+                },
+                2000
+            );
+            setTimeout(
+                function(){
+                    box.classList.replace("blue", "green");
+                },
+                4000
+            );
+            setTimeout(
+                function(){
+                    box.classList.replace("green", "yellow");
+                },
+                6000
+            );
+            
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: JS Async</title>
+    <script src="timeout.js"></script>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            transition: background-color 1.5s linear;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .red { 
+            background-color: red;
+        }
+        .green { 
+            background-color: greenyellow;
+        }
+        .container {
+            margin:auto;
+            width: 102px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box"></div>
+        <button onclick="colorsequenceCallback()">Toggle</button>
+    </div>
+    <script>
+        let running = false;
+        let stopped = false;
+        let stopPromise = null;
+        let restart = null;
+
+        function toggle(){
+            if (!running){
+                running = true;
+                colorsequence();
+                stopped = false;
+            }
+            else {
+                stopped = !stopped;
+                if (restart){
+                    restart();
+                    restart = null;
+                }
+            }
+
+        }
+        
+        function isNotStopped(){
+            return new Promise(
+                function(resolve){
+                    if (!stopped)
+                        resolve();
+                    else restart = resolve;
+                }
+            )
+        }
+
+        async function colorsequence(){
+            const box = document.getElementById("box");
+            // red after 2s blue, after 2s green
+            box.classList.add("red");
+            //wait for 2 sec
+            await sleep(2000);
+            // wait until not stopped
+            await isNotStopped();
+            // change to blue
+            box.classList.replace("red", "blue");
+            await sleep(2000);
+            await isNotStopped();
+            box.classList.replace("blue", "green");
+        }
+
+        
+    </script>
+
+</body>
+</html>
