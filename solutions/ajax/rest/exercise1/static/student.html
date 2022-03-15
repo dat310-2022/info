@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON via AJAX</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #cccccc;
+            text-align: left;
+        }
+        
+        td, th {
+            border: 1px solid black;
+            padding: 3px;    
+        }
+    </style>
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+<form action="#">  <!-- form action does not matter for now as we don't actually submit the form -->
+    <label for="name">Name</label>
+    <input type="text" id="name" v-model="name">
+    <br>
+    <label for="student_no">Student Number</label>
+    <input v-if="editing" type="text" id="student_no" v-bind:value="number" readonly>
+    <br>
+    <button v-on:click="editStudent" v-if="editing">Edit student</button>
+    <button v-on:click="addStudent" v-else>Add student</button>
+    
+</form>
+
+<table id="student_table">
+    <thead>
+        <tr>
+            <th>Student Number</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="student, index in students">
+            <td>{{ student.student_no }}</td>
+            <td  v-on:click="edit(student)">{{ student.name }} </td> 
+            <td v-on:click="remove(index)"> X</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+<script>
+
+let app = Vue.createApp({
+    data: function(){
+        return {
+            students: [],
+            editing: false,
+            name: "",
+            number: "",
+        }
+    },
+    created: async function(){
+        let request = await fetch("/students");
+        if (request.status == 200){
+            let result = await request.json();
+            this.students = result;
+        }
+    },
+    methods: {
+        async remove(index){
+            let student = this.students[index];
+            this.students.splice(index,1);
+            this.editing = false;
+            let request = await fetch("/student/" + student.student_no, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            if (request.status == 200){
+                let result = await request.text();
+                console.log(result);
+            }
+        },
+        edit(student){
+            this.name = student.name;
+            this.number = student.student_no;
+            this.editing = true;
+        },
+        editStudent: async function(){
+            let student = this.students.find(s=>s.student_no == this.number);
+            if (student){
+                console.log("updating");
+                student.name = this.name;
+            }
+            this.editing = false;
+            let request = await fetch("/student/" + student.student_no, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(student)
+            });
+            if (request.status == 200){
+                let result = await request.text();
+                console.log(result);
+            }
+        },
+        addStudent: async function(){
+            if (this.name){
+                //adding student without number
+                let new_student = Vue.reactive({student_no: null, name: this.name});
+                this.students.push(new_student);
+                let request = await fetch("/students", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(new_student)
+                });
+                if (request.status == 200){
+                    let result = await request.json();
+                    console.log(result);
+                    if (new_student.name == result.name){
+                        new_student.student_no = result.student_no;
+                    }
+                }
+            }
+        }
+    }
+});
+let vm = app.mount("#app");
+
+</script>
+</body>
+</html>

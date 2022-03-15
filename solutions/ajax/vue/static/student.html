@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON via AJAX</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #cccccc;
+            text-align: left;
+        }
+        
+        td, th {
+            border: 1px solid black;
+            padding: 3px;    
+        }
+    </style>
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+<form action="#">  <!-- form action does not matter for now as we don't actually submit the form -->
+    <label for="name">Name</label>
+    <input type="text" id="name" v-model="new_name">
+    <br>
+    <label for="student_no">Student Number</label>
+    <input type="text" id="student_no" v-model="new_number">
+    <br>
+    <button v-on:click="addStudent">Add student</button>
+</form>
+
+<table id="student_table">
+    <thead>
+        <tr>
+            <th>Student Number</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="student in students">
+            <td>{{ student.student_no }}</td>
+            <td>{{ student.name }}</td> 
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+<script>
+
+let app = Vue.crateApp({
+    data: function(){
+        return {
+            students: [],
+            new_name: "",
+            new_number: "",
+        }
+    },
+    created: async function(){
+        let request = await fetch("/students");
+        if (request.status == 200){
+            let result = await request.json();
+            this.students = result;
+        }
+    },
+    methods: {
+        addStudent: async function(){
+            if (this.new_name && this.new_number){
+                this.students.push({student_no: this.new_number, name: this.new_name});
+                let request = await fetch("/addStudent", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ student_no: this.new_number, name: this.new_name})
+                });
+                if (request.status == 200){
+                    let result = await request.json();
+                    this.students = result;
+                s}
+            }
+        }
+    }
+});
+app.mount("#app");
+
+</script>
+</body>
+</html>

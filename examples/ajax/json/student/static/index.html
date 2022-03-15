@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple AJAX example</title>
+    <script src="/static/student.js"></script>
+</head>
+<body>
+
+<form action="#">  <!-- form action does not matter for now as we don't actually submit the form -->
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" id="name" /></td>
+        </tr>
+        <tr>
+            <td>Student number:</td>
+            <td><input type="text" name="student_no" id="student_no" /></td>
+        </tr>
+    </table>
+    <input type="button" value="Send" onclick="sendStudent();"/>
+    <input type="button" value="get" onclick="getStudent();"/>
+</form>
+</body>
+</html>

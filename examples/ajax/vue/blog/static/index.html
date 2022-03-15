@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Vue -->
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+
+    
+    <script src="/static/src/blockPost.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+
+    
+    <title>Vue  playlist</title>
+</head>
+<body>
+<div id="app">
+        <ul>
+            <li v-for="title in titles"
+                v-on:click="show(title)"
+            >{{ title }}</li>
+        </ul>
+        <block-post v-bind:title="showing"
+        v-bind:key="showing"
+        v-if="showing"></block-post>
+    
+</div>
+<script>
+    let app = Vue.createApp({
+        data: function(){
+            return {
+                titles: [],
+                loading: true,
+                showing: "",
+            }
+        },
+        created: async function(){
+            let response = await fetch("/posts");
+            if (response.status == 200){
+                let result = await response.json();
+                this.titles = result;
+                this.loading = false;
+            }
+        },
+        methods: {
+            show: function(title){
+                this.showing = title;
+            }
+        }
+    }).component("block-post",blockPostC).mount("#app");
+
+</script>
+</body>
+</html>

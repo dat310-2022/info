@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+}
+
+h1 { 
+    margin-top: 0px;
+    padding-top:20px; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100%;
+    position: relative;
+}
+
+ul {
+    border: 1px solid #a9a9a9;
+    padding: 0px;
+    list-style-type: none;
+    width: 150px;
+    position: absolute;
+    margin:0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #e3e3e3;
+}
+
+ul li {
+    border-bottom: 1px solid #a9a9a9;
+    padding: 10px;
+    background-image: linear-gradient(#f9f9f9, #e3e3e3);
+    text-align: center;
+}
+
+.post {
+    padding-left: 160px;
+    padding-right: 10px;
+}
+
