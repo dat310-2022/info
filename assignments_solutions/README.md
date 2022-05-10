@@ -7,3 +7,4 @@
 * [Assignment 5](5)
 * [Assignment 6](6)
 * [Assignment 7](7)
+* [Assignment 8](8)
