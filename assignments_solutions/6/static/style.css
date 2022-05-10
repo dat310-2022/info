@@ -1,0 +1,39 @@
+* {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #cccccc;
+    text-align: left;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 3px;    
+}
+
+.error {
+    color:white;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: indianred;
+    padding: 2px;
+}
+
+.success {
+    color:white;
+    border: 1px solid green;
+    border-radius: 5px;
+    background-color: lightgreen;
+    padding: 2px;
+}

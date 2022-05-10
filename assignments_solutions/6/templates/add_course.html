@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Register new course</h1>
+    {% if name_error is defined %}
+        <p class="error">{{ name_error }}</p>
+    {% endif %}
+    <form action="/course" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="id">Course code</label>
+        <input type="text" name="id" id="id">
+        <br>
+        <label></label>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

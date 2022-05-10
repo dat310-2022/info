@@ -1,0 +1,97 @@
+* {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.winner {
+    width: 400;
+    text-align: center;
+    margin: auto;
+    background-color: lightgoldenrodyellow;
+}
+
+#startbutton {
+    border: 1px solid black;
+    width: 100px;
+    margin: 100px auto;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.cardboard {
+    overflow: auto;
+    padding: 10px;
+    background-color: #ececec;
+    margin: auto;
+}
+
+.card {
+    border-radius: 10px;
+    border: 2px solid #73AD21;
+    background-color: white;
+    margin: 5px;
+    transition: transform 0.6s;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.outer {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 150px;
+}
+
+.card.back {
+    z-index: 2;
+    backface-visibility: hidden;
+}
+
+.card.front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card img {
+    width: 90%;
+}
+
+.clearleft {
+    clear: left;
+}
+
+/* gamestat */
+
+#gamestat {
+    height: 60px;
+    margin: 20px;
+}
+
+#gamestat div {
+    width: 33%;
+    float: left;
+}
+
+.score {
+    border: 1px solid black;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.2em;
+}
+
+#player2 {
+    text-align: right;
+}
+
+#stat {
+    text-align: center;
+}
+
+.current-player {
+    border-bottom: 4px solid #FF6633;  /* Nice orange */;
+}

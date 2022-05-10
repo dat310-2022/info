@@ -1,0 +1,4 @@
+1	Coldplay	A Rush of Blood to the Head	Coldplay-ARushofBlood.jpg
+2	Guns N' Roses	Use Your Illusion I	GnR-UseYourIllusion1.jpg
+3	Guns N' Roses	Use Your Illusion II	GnR-UseYourIllusion2.jpg
+4	Nightwish	Imaginaerum	Nightwish-Imaginaerum.jpg

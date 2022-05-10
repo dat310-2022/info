@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 6: Gradebook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+    <h1>Grades for {{ course.course_id }}</h1>
+    {% for grade in grades |sort(attribute='grade') %}
+        {% if loop.first %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Number</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% endif %}
+            <tr>
+                <td>{{ grade.student_no }} </td>
+                <td>{{ grade.grade }}</td>
+            </tr>
+        {% if loop.last %}
+            </tbody>
+            </table>
+        {% endif %}
+    {% else %}
+        <em>No grades registered.</em>
+    {% endfor %}
+
+    
+    {% for grade in stats |sort(attribute='grade') %}
+        {% if loop.first %}
+        <h3>Summary</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% endif %}
+            <tr>
+                <td>{{ grade.grade }} </td>
+                <td>{{ grade.count }}</td>
+            </tr>
+        {% if loop.last %}
+            </tbody>
+            </table>
+        {% endif %}
+    {% endfor %}
+
+
+    <form action="../add_grade.html" method="get">
+        <input type="text" name="course" value="{{ course.course_id}}" hidden>
+        <input type="submit" value="add grade">
+    </form>
+</body>
+</html>
